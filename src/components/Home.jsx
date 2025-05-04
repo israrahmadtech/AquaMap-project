@@ -73,20 +73,12 @@ function Home() {
                                     <h1 className='fs-2 fw-bold'>AquaMap</h1>
                                 </div>
                             </a>
-                            {/* <form className="d-flex" onSubmit={handleSearch}>
-                                <input
-                                    ref={inputRef}
-                                    className="form-control me-2"
-                                    type="search"
-                                    placeholder="Search"
-                                    aria-label="Search"
-                                    value={searchText}
-                                    onChange={(e) => setSearchText(e.target.value)}
-                                />
-
-                                <button className="btn btn-outline-success" type="submit">Search</button>
-                            </form> */}
-
+                            <img
+                                src="./images/israrahmad.png"
+                                alt="Profile"
+                                className="rounded-circle me-3"
+                                style={{ width: "48px", height: "48px", objectFit: "cover", backgroundColor: "#6c757d" }}
+                            />
                         </div>
                     </nav>
                 </div>

@@ -6,6 +6,7 @@ import Home from './components/home';
 import LiveLocationMap from './components/userLocation';
 import ShareWater from './components/ShareWater';
 import Dashboard from './components/Dashboard';
+import MoreDetails from './components/MoreDetails';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/mylocation" element={<LiveLocationMap />} />
         <Route path="/share" element={<ShareWater />} />
+        <Route path="/more-details/:id" element={<MoreDetails />} />
       </Routes>
     </Router>
   );

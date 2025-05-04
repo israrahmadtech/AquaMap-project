@@ -8,3 +8,8 @@
     display: flex;
     justify-content: center;
 }
+
+.review-card{
+    width: 350px;
+    height: 430px;
+}

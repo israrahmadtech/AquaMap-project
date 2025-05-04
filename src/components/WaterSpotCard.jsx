@@ -1,6 +1,7 @@
 import React from 'react';
-import { Card, Badge } from 'react-bootstrap';
+import { Card, Badge, Button } from 'react-bootstrap';
 import '../css/waterSpotedCard.css'
+import { Link } from 'react-router-dom';
 
 function WaterSpotCard({ spot }) {
     return (
@@ -34,6 +35,11 @@ function WaterSpotCard({ spot }) {
                         <Card.Text className="text-end text-muted small">
                             Last updated: {spot.updatedAt}
                         </Card.Text>
+                        <Link  to={`/more-details/${spot.id}`} state={{ spot }}>
+                            <Button variant="outline-secondary" size="sm" className="fst-italic mb-2">
+                                More details
+                            </Button>
+                        </Link>
                     </Card.Body>
                 </div>
             </div>
