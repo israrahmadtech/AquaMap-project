@@ -1,0 +1,22 @@
+[
+    {
+      "id": 1,
+      "name": "Masjid Water Tap",
+      "address": "Near ABC Chowk, Bara Bazar",
+      "image": "./images/waterSpot1.jpg",
+      "distance": "300m",
+      "review": "Clean water, used daily",
+      "verified": true,
+      "updatedAt": "2 days ago"
+    },
+    {
+      "id": 2,
+      "name": "Public Tap",
+      "address": "XYZ Road, City Center",
+      "image": "./images/waterSpot2.jpg",
+      "distance": "500m",
+      "review": "Safe and clean",
+      "verified": false,
+      "updatedAt": "1 week ago"
+    }
+]
