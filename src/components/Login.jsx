@@ -24,12 +24,11 @@ function Login() {
     
         if (matchedUser) {
             alert("Login successful!");
-            // Save matched user as logged-in user
-            localStorage.setItem("loggedInUser", JSON.stringify(matchedUser));
-            // Save current user (you can modify this as per your requirement)
+            // Save current user in allUsers array
             localStorage.setItem("currentUser", JSON.stringify(matchedUser)); // Save current user too
+
             // Redirect to home/dashboard
-            navigate("/dashboard");  // You can create this route later
+            navigate("/home");  // You can create this route later
         } else {
             alert("Invalid email or password.");
         }

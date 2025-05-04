@@ -1,3 +1,6 @@
+@import "leaflet/dist/leaflet.css";
+
+
 :root {
   --primary-color: #3FA7A3;
   --secondary-color: #B2E4DD;

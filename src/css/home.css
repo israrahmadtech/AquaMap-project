@@ -1,5 +1,13 @@
-header {
+section#banner {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://images.unsplash.com/photo-1528825871115-3581a5387919");
     background-size: cover;
     background-position: center;
+}
+
+#header .logo{
+    width: 200px;
+}
+#header .logo img{
+    width: 50px;
+    object-fit: cover;
 }
