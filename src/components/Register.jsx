@@ -22,7 +22,7 @@ function Register() {
         // Check if email already exists
         const userExists = existingUsers.find(user => user.email === formData.email);
         if (userExists) {
-            alert("User already exists with this email.");
+            alert("User already exists with this email. Kindly Logged in");
             return;
         }
     

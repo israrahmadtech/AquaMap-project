@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './components/login';
 import Register from './components/register';
 import Home from './components/home';
 import LiveLocationMap from './components/userLocation';
 import ShareWater from './components/ShareWater';
 import Dashboard from './components/Dashboard';
 import MoreDetails from './components/MoreDetails';
+import Login from './components/Login';
 
 
 function App() {

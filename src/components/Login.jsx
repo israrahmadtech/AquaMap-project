@@ -74,7 +74,7 @@ function Login() {
                             Login Now
                         </button>
                     </form>
-                    <p>error</p>
+                    <p></p>
                     <p className="text-end pe-2">New to our website?  
                         <Link className="text-decoration-none" to="/register"> Register</Link>
                     </p>

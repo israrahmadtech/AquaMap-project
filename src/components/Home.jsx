@@ -127,7 +127,7 @@ function Home() {
                 <div id="water-spots" className="container">
                     <h3 className="mb-3">Nearby Water (within 5KM)</h3>
                     {masjids.length === 0 ? (
-                        <p>No masjids found nearby.</p>
+                        <p>No water found nearby.</p>
                     ) : (
                         <div className="row">
                             {masjids
