@@ -8,8 +8,8 @@ function WaterSpotCard({ spot }) {
             <div className="row">
                 <div className="col-md-4">
                     <img
-                        src={spot.image || "default-placeholder.jpg"}
-                        className="h-100 w-100 object-fit-cover"
+                        src={spot.image && spot.image.trim() !== "" ? spot.image : "./images/aqua_logo2.png"}
+                        className="h-100 object-fit-cover"
                         alt={spot.name}
                         style={{ objectFit: 'cover' }}
                     />

@@ -5,6 +5,7 @@ import Register from './components/register';
 import Home from './components/home';
 import LiveLocationMap from './components/userLocation';
 import ShareWater from './components/ShareWater';
+import Dashboard from './components/Dashboard';
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home />} />
-        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/mylocation" element={<LiveLocationMap />} />
         <Route path="/share" element={<ShareWater />} />
       </Routes>

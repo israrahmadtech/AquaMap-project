@@ -5,4 +5,6 @@
 .water-spot-card div,
 .water-spot-card div{
     height: 100%;
+    display: flex;
+    justify-content: center;
 }

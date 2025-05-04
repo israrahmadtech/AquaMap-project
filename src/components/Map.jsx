@@ -14,21 +14,32 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow,
 });
 
-function MapComponent({ center }) {
+function MapComponent({ center, masjidLocations, waterLocations }) {
   return (
     <MapContainer
       center={center}
       zoom={13}
       style={{ height: '400px', width: '100%' }}
-      key={center.toString()} // ensures rerender on location change
+      key={center.toString()}
     >
       <TileLayer
         attribution='&copy; OpenStreetMap contributors'
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
       />
-      <Marker position={center}>
-        <Popup>Searched or default location</Popup>
-      </Marker>
+
+      {/* Masjid Markers */}
+      {masjidLocations.map((loc, idx) => (
+        <Marker key={`masjid-${idx}`} position={[loc.lat, loc.lng]}>
+          <Popup>{loc.name || 'Masjid'}</Popup>
+        </Marker>
+      ))}
+
+      {/* Water Source Markers */}
+      {waterLocations.map((loc, idx) => (
+        <Marker key={`water-${idx}`} position={[loc.lat, loc.lng]}>
+          <Popup>{loc.name || 'Shared Water Location'}</Popup>
+        </Marker>
+      ))}
     </MapContainer>
   );
 }

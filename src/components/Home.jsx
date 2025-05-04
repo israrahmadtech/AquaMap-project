@@ -4,8 +4,11 @@ import '../css/home.css'; // optional custom styles
 import MapComponent from './Map';
 import WaterSpotCard from './waterSpotCard';
 import { useWaterSpots } from './useWaterSpots';
+import MapComponentWrapper from './MapComponentWrapper';
 
 function Home() {
+
+    const [masjids, setMasjids] = useState([]);
 
     const spot = {
         name: "Masjid Water Tap",
@@ -45,6 +48,19 @@ function Home() {
 
     const { spots } = useWaterSpots();
 
+    function getDistanceKm(lat1, lon1, lat2, lon2) {
+        const R = 6371; // Earth radius in KM
+        const dLat = ((lat2 - lat1) * Math.PI) / 180;
+        const dLon = ((lon2 - lon1) * Math.PI) / 180;
+        const a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos((lat1 * Math.PI) / 180) *
+            Math.cos((lat2 * Math.PI) / 180) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
+    }
+
     return (
         <>
             <header id="header" className='bg-body-tertiary'>
@@ -57,7 +73,7 @@ function Home() {
                                     <h1 className='fs-2 fw-bold'>AquaMap</h1>
                                 </div>
                             </a>
-                            <form className="d-flex" onSubmit={handleSearch}>
+                            {/* <form className="d-flex" onSubmit={handleSearch}>
                                 <input
                                     ref={inputRef}
                                     className="form-control me-2"
@@ -69,7 +85,7 @@ function Home() {
                                 />
 
                                 <button className="btn btn-outline-success" type="submit">Search</button>
-                            </form>
+                            </form> */}
 
                         </div>
                     </nav>
@@ -93,25 +109,58 @@ function Home() {
                 </div>
             </section>
 
-            <section id="map" className="container py-5">
-                <MapComponent center={mapCenter} />
+            <div className="container pt-4">
+                <form className="d-flex" onSubmit={handleSearch}>
+                    <input
+                        ref={inputRef}
+                        className="form-control me-2"
+                        type="search"
+                        placeholder="Search"
+                        aria-label="Search"
+                        value={searchText}
+                        onChange={(e) => setSearchText(e.target.value)}
+                    />
+
+                    <button className="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+
+            <section id="map" className="container py-5 pt-3">
+                <MapComponentWrapper center={mapCenter} onMasjidData={setMasjids} />
             </section>
 
 
 
             <section>
                 <div id="water-spots" className="container">
-                    {spots.length === 0 ? (
-                        <p>No water spots shared yet.</p>
+                    <h3 className="mb-3">Nearby Water (within 5KM)</h3>
+                    {masjids.length === 0 ? (
+                        <p>No masjids found nearby.</p>
                     ) : (
                         <div className="row">
-                            {spots.map((spot) => (
-                                <WaterSpotCard key={spot.id} spot={spot} />
-                            ))}
+                            {masjids
+                                .map((masjid) => {
+                                    const distance = getDistanceKm(mapCenter[0], mapCenter[1], masjid.lat, masjid.lng);
+                                    return {
+                                        id: masjid.id,
+                                        name: masjid.name,
+                                        address: masjid.address,
+                                        image: '/images/aqua_logo2.png',
+                                        distance: `${distance.toFixed(2)} km`,
+                                        review: "Community prayer area",
+                                        verified: true,
+                                        updatedAt: "Today"
+                                    };
+                                })
+                                .filter((m) => parseFloat(m.distance) <= 1)
+                                .map((masjid) => (
+                                    <WaterSpotCard key={masjid.id} spot={masjid} />
+                                ))}
                         </div>
                     )}
                 </div>
             </section>
+
 
 
             <footer className="bg-light py-4 text-center">
